@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #050B18;
+    }
+    #moneyFlowChart {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="moneyFlowChart"></canvas>
+  <script>
+    const canvas = document.getElementById('moneyFlowChart');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const data = {
+      labels: ['MON','TUE','WED','THU','FRI','SAT','SUN'],
+      datasets: [{
+        label: 'Money flow',
+        data: [40, 90, 75, 110, 60, 80, 130],
+        backgroundColor: '#3b6cff',
+        borderRadius: 2,
+        barPercentage: 0.6,
+        categoryPercentage: 0.8
+      }]
+    };
+
+    const options = {
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false } },
+        y: {
+          grid: { color: '#28324a' },
+          beginAtZero: true,
+          max: 150
+        }
+      },
+      responsive: false,
+      maintainAspectRatio: false
+    };
+
+    new Chart(ctx, { type: 'bar', data, options });
+  </script>
+</body>
+</html>
