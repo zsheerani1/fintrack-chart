@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { margin: 0; background: transparent; }
+    canvas { width: 100% !important; height: 100% !important; }
+  </style>
+</head>
+<body>
+  <canvas id="c"></canvas>
+  <script>
+    const ctx = document.getElementById('c').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['','','','','','',''],
+        datasets: [{
+          data: [18000, 20000, 19000, 22000, 21000, 23500, 24500],
+          borderColor: '#22C55E',
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: true,
+          backgroundColor: (ctx) => {
+            const g = ctx.chart.ctx.createLinearGradient(0, 0, 0, 80);
+            g.addColorStop(0, 'rgba(34,197,94,0.3)');
+            g.addColorStop(1, 'rgba(34,197,94,0)');
+            return g;
+          },
+          tension: 0.4
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+        scales: { x: { display: false }, y: { display: false } },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  </script>
+</body>
+</html>
