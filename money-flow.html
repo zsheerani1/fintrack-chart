@@ -29,25 +29,24 @@
 
   const data = {
     labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-    datasets: [
-      {
-        label: 'Income',
-        data: [9, 6, 8, 7.5, 8.2, 9.3, 8.5, 10, 9.1, 8.4, 7.9, 8.7],
-        backgroundColor: '##2f4a92',
-        borderRadius: 10,
-        barPercentage: 0.5,
-        categoryPercentage: 0.7
-      },
-      {
-        label: 'Expense',
-        data: [-6.5, -5, -6.8, -6, -5.5, -7.2, -6.3, -6.9, -6.1, -5.8, -5.4, -6],
-        backgroundColor: '#152935',
-        borderRadius: 10,
-        barPercentage: 0.5,
-        categoryPercentage: 0.7
-      }
-    ]
-  };
+   datasets: [
+  {
+    label: 'Income',
+    data: [...],
+    backgroundColor: '#4FD1C5',   // teal / cyan from your Figma
+    borderRadius: 10,
+    barPercentage: 0.4,
+    categoryPercentage: 0.65
+  },
+  {
+    label: 'Expense',
+    data: [...],
+    backgroundColor: '#1A2540',   // dark card colour from your Figma
+    borderRadius: 10,
+    barPercentage: 0.4,
+    categoryPercentage: 0.65
+  }
+]
 
   const options = {
     plugins: {
@@ -80,30 +79,24 @@
     },
     scales: {
       x: {
-        grid: { display: false },
-        ticks: {
-          color: '#8B96B5',
-          font: { size: 11 }
-        }
-      },
-      y: {
-        grid: {
-          color: '#E5ECF5',
-          drawBorder: false
-        },
-        ticks: {
-          color: '#B0BACF',
-          font: { size: 10 },
-          stepSize: 5,
-          callback: function(v) {
-            if (v === 0) return '';
-            return (v > 0 ? '+' : '') + v + 'k';
-          }
-        },
-        beginAtZero: true,
-        suggestedMin: -10,
-        suggestedMax: 10
-      }
+  grid: { display: false },
+  ticks: {
+    color: '#6F7B99',        // your secondary text colour
+    font: { size: 11, weight: '500' }
+  }
+},
+y: {
+  grid: {
+    color: '#202A3F',        // subtle divider colour from your Figma
+    drawBorder: false
+  },
+  ticks: {
+    color: '#56617F',
+    font: { size: 10, weight: '500' },
+    ...
+  },
+  suggestedMin: -8,
+  suggestedMax: 8
     },
     layout: {
       padding: { top: 10, right: 24, bottom: 16, left: 24 }
